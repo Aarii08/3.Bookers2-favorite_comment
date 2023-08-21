@@ -1,11 +1,12 @@
 class BooksController < ApplicationController
-  
+
   before_action :authenticate_user!
 
   def show
     @book = Book.find(params[:id])
     @user = current_user
     @book_new = Book.new
+    @book_comment = BookComment.new
   end
 
   def index
@@ -51,5 +52,5 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
+
 end
